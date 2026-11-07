@@ -48,7 +48,7 @@ class LocalLedgerApp(ctk.CTk):
         header.pack(fill="x")
         header.pack_propagate(False)
         ctk.CTkLabel(header, text="LOCAL LEDGER", font=ctk.CTkFont(size=24, weight="bold"), text_color="white").pack(side="left", padx=28)
-        ctk.CTkLabel(header, text="Private budgeting • stored only on this computer", text_color="#CBD5E1").pack(side="left")
+        ctk.CTkLabel(header, text="Income • expenses • monthly budgets", text_color="#CBD5E1").pack(side="left")
 
         self.tabs = ctk.CTkTabview(self, segmented_button_selected_color=COLOURS["blue"])
         self.tabs.pack(fill="both", expand=True, padx=20, pady=16)
@@ -327,4 +327,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
