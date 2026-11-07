@@ -1,0 +1,30 @@
+date,description,amount,category,type,notes
+2026-10-01,Monthly salary,1850.00,Salary,income,October wages
+2026-10-01,Rent payment,-650.00,Housing,expense,Monthly rent
+2026-10-02,Tesco weekly shop,-46.82,Food,expense,Groceries
+2026-10-02,Bus pass,-58.00,Transport,expense,Monthly travel pass
+2026-10-03,Mobile phone bill,-18.00,Utilities,expense,Phone contract
+2026-10-04,Netflix subscription,-10.99,Entertainment,expense,Monthly subscription
+2026-10-05,College lunch,-6.75,Food,expense,
+2026-10-06,Freelance website work,120.00,Other income,income,Small freelance project
+2026-10-07,Petrol,-42.50,Transport,expense,
+2026-10-08,Amazon order,-27.49,Shopping,expense,USB drive and notebook
+2026-10-09,Electricity bill,-64.20,Utilities,expense,
+2026-10-10,Supermarket,-38.17,Food,expense,Weekly groceries
+2026-10-11,Cinema tickets,-21.00,Entertainment,expense,
+2026-10-12,Prescription,-9.90,Health,expense,
+2026-10-13,Coffee with friends,-8.40,Food,expense,
+2026-10-14,Online Python course,-24.99,Education,expense,Programming course
+2026-10-15,Part-time shift,95.00,Other income,income,Weekend work
+2026-10-16,Train ticket,-31.60,Transport,expense,Return journey
+2026-10-18,Supermarket,-51.23,Food,expense,Weekly groceries
+2026-10-20,New headphones,-39.99,Shopping,expense,
+2026-10-21,Water bill,-28.50,Utilities,expense,
+2026-10-23,Takeaway,-18.75,Food,expense,
+2026-10-25,Football match ticket,-26.00,Entertainment,expense,
+2026-10-27,Course textbook,-34.50,Education,expense,Computer science textbook
+2026-10-29,Supermarket,-44.91,Food,expense,Weekly groceries
+2026-10-30,Refund from shop,15.00,Other income,income,Returned item
+2026-10-31,Charity donation,-10.00,Other expense,expense,
+
+
