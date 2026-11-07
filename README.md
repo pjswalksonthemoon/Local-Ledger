@@ -96,16 +96,6 @@ Tests use a temporary SQLite database and leave no financial data behind:
 python -m unittest discover -v
 ```
 
-## Three minute interview demo
-
-1. Add an expense and show the dashboard update.
-2. Try `twelve` as the amount or tomorrow's date and show it being rejected.
-3. Set a Food budget and show its progress bar.
-4. Import `sample_data/bank_statement_example.csv`; valid lines import while the malformed date is reported with its line number.
-5. Open `local_ledger/database.py` and explain the two foreign key relationships.
-
-Read [the complete project and interview guide](docs/PROJECT_EXPLANATION.md) for a code walkthrough, links to your A Level topics, model answers and an improvement roadmap.
-
 ## Privacy and limitations
 
 The app makes no network requests and has no analytics or account system. The database remains on the computer, but it is not encrypted. Someone with access to the Windows account and database file may be able to read it. Encryption and authenticated profiles are suitable future extensions.
