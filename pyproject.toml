@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-ledger"
+version = "1.0.0"
+description = "A private, offline desktop budget tracker built with Python, CustomTkinter and SQLite."
+requires-python = ">=3.11"
+dependencies = ["customtkinter==5.2.2"]
+
+[project.scripts]
+local-ledger = "local_ledger.app:main"
+
+[tool.setuptools.packages.find]
+include = ["local_ledger*"]
+

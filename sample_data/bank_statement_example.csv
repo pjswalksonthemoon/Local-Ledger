@@ -1,0 +1,7 @@
+Date,Description,Amount,Category,Type,Notes
+2026-10-01,Apprenticeship salary,1450.00,Salary,income,Monthly pay
+2026-10-02,Supermarket,-42.73,Food,expense,Weekly shop
+2026-10-04,Bus pass,-58.00,Transport,expense,Monthly pass
+2026-10-08,Cinema,-13.50,Entertainment,expense,
+not-a-date,Broken example,-5.00,Food,expense,This row demonstrates graceful error handling
+
