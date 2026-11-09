@@ -1,22 +1,10 @@
 # Local Ledger
 
-Local Ledger is a private desktop finance tracker built with Python, CustomTkinter and SQLite. It records income and expenses, sets monthly category budgets, imports bank CSV files and exports summary reports. All financial data stays in a local SQLite file on the user's computer.
+A desktop budget tracker I built with Python, CustomTkinter, and SQLite. It records income and expenses, tracks monthly category budgets, imports bank CSV files, and exports monthly reports. Data stays in a local SQLite file.
 
-## Features
+## Run it
 
-- Add, view and delete income and expense transactions.
-- Organise transactions using relational categories.
-- Set a different limit for each expense category and month.
-- See income, expenses, balance, category spending and budget progress.
-- Import comma, semicolon, tab or pipe separated bank files one row at a time.
-- Continue importing valid rows when malformed rows are found, then show line specific errors.
-- Export monthly totals, category spending and budget remaining.
-- Reject blank descriptions, invalid amounts, invalid months and future dates before a database write.
-- Store money as integer pennies to avoid binary floating point rounding errors.
-
-## Quick start
-
-Install Python 3.11 or newer, then open a terminal in this project:
+Requires Python 3.11 or newer.
 
 ```powershell
 python -m venv .venv
@@ -25,82 +13,30 @@ python -m pip install -r requirements.txt
 python run.py
 ```
 
-The database is created at `LocalLedgerData/local_ledger.db` inside your user folder. To use a disposable demonstration database:
+The default database is `LocalLedgerData/local_ledger.db` in your user folder. For a test database, run `python run.py --database demo.db`.
 
-```powershell
-python run.py --database demo.db
-```
+## CSV import
 
-## CSV format
-
-The importer requires `date`, `description` and `amount`. It recognises common alternatives such as `Transaction Date`, `Details`, `Narrative`, `Value` and `Memo`. `category`, `type` and `notes` are optional.
+The required columns are date, description, and amount. Common alternatives such as `Transaction Date`, `Details`, and `Value` are recognised. Category, type, and notes are optional.
 
 ```csv
-Date,Description,Amount,Category,Type,Notes
-2026-10-01,Salary,1450.00,Salary,income,Monthly pay
-2026-10-02,Supermarket,-42.73,Food,expense,Weekly shop
+Date,Description,Amount,Category,Type
+2026-10-01,Salary,1450.00,Salary,income
+2026-10-02,Supermarket,-42.73,Food,expense
 ```
 
-When `type` is missing, a negative amount is treated as an expense and a positive amount as income.
-
-## Relational schema
-
-```mermaid
-erDiagram
-    CATEGORIES ||--o{ TRANSACTIONS : classifies
-    CATEGORIES ||--o{ BUDGETS : receives
-    CATEGORIES {
-        integer id PK
-        text name UK
-        text kind
-    }
-    TRANSACTIONS {
-        integer id PK
-        text transaction_date
-        text description
-        integer amount_cents
-        integer category_id FK
-        text notes
-    }
-    BUDGETS {
-        integer id PK
-        integer category_id FK
-        text month
-        integer limit_cents
-    }
-```
-
-`transactions.category_id` and `budgets.category_id` reference `categories.id`. Foreign key enforcement is enabled on every connection. The unique pair `(category_id, month)` permits only one budget for a category in a given month.
-
-## Project structure
-
-```text
-local_ledger/
-  app.py           CustomTkinter interface and event handlers
-  database.py      schema, parameterised SQL and database operations
-  validation.py    pure validation and money/date conversion functions
-  csv_service.py   streaming import and monthly report export
-tests/
-  test_local_ledger.py
-sample_data/
-  bank_statement_example.csv
-docs/
-  PROJECT_EXPLANATION.md
-```
+If type is omitted, a positive amount is treated as income and a negative amount as an expense. Valid rows import even when another row is rejected; the app lists the rejected line numbers. Re-importing the same file can create duplicates.
 
 ## Tests
-
-Tests use a temporary SQLite database and leave no financial data behind:
 
 ```powershell
 python -m unittest discover -v
 ```
 
-## Privacy and limitations
+The tests use temporary databases. GitHub Actions runs them on pushes and pull requests.
 
-The app makes no network requests and has no analytics or account system. The database remains on the computer, but it is not encrypted. Someone with access to the Windows account and database file may be able to read it. Encryption and authenticated profiles are suitable future extensions.
+See [project notes](docs/PROJECT_EXPLANATION.md) for the data model and known limits. The database is not encrypted, so protect the computer account and back up the file if it holds important records.
 
 ## Licence
 
 MIT. See [LICENSE](LICENSE).
-
